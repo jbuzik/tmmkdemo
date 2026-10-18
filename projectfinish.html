@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join TMMK | Membership & Donation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#c8102e;--red-d:#8b0000;--gold:#fdb913;--ink:#1a1a1a;--mute:#525252;--line:#e5e0d8;--bg:#faf9f6;--cream:#fff8e7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Inter,'Noto Sans Tamil',sans-serif;color:var(--ink);font-size:14px;line-height:1.5}
+h1,h2,h3,h4{font-family:'Noto Sans','Noto Sans Tamil',sans-serif;margin:0}
+.ta{font-family:'Noto Sans Tamil',Inter,sans-serif}
+.wrap{max-width:1152px;margin:0 auto;padding:0 24px}
+.hidden{display:none!important}
+/* header */
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;gap:12px;align-items:center;min-width:0}
+.emblem{width:44px;height:44px;border-radius:12px;border:1px solid rgba(200,16,46,.2);background:#fef2f2;color:var(--red);display:grid;place-items:center;font-weight:700;font-size:12px;flex-shrink:0}
+.brand h1{font-size:16px;color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font-size:11px;letter-spacing:.3px;color:var(--mute);text-transform:uppercase}
+nav{display:flex;gap:4px;align-items:center}
+nav button{background:none;border:0;padding:6px 12px;border-radius:6px;font:600 12px Inter;color:var(--mute);cursor:pointer}
+nav button.on{background:var(--red);color:#fff}
+.lang{display:flex;background:#f0eded;border:1px solid var(--line);border-radius:12px;padding:4px;margin-left:8px}
+.lang button{border:0;background:none;padding:2px 8px;border-radius:10px;font:500 11px Inter;color:var(--mute);cursor:pointer}
+.lang button.on{background:var(--red);color:#fff}
+/* page */
+main{padding:32px 0 40px}
+.crumb{font-size:12px;font-weight:600;color:var(--mute);margin-bottom:8px}
+.crumb span{color:var(--red)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.title{font-size:28px;font-weight:700;letter-spacing:-.5px}
+.title .ta{color:var(--red);font-size:18px;font-weight:400;margin-left:6px}
+.sub{color:var(--mute);margin:4px 0 0}
+.phase{background:var(--cream);border:1px solid rgba(253,185,19,.4);color:var(--red);font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:5px 10px;border-radius:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 1px 1px rgba(0,0,0,.05);padding:24px;margin-bottom:24px}
+/* stepper */
+.steps{display:flex;justify-content:center;gap:40px;position:relative;padding:12px 0}
+.steps:before{content:"";position:absolute;left:80px;right:80px;top:32px;height:2px;background:#e5e2e1}
+.step{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--mute);font-weight:600}
+.dot{width:40px;height:40px;border-radius:12px;background:#eae7e7;display:grid;place-items:center;font-weight:700;color:var(--mute);box-shadow:0 0 0 4px #fff}
+.step.on{color:var(--red)}
+.step.on .dot{background:var(--red);color:#fff}
+.step.done .dot{background:#f3c4cc;color:var(--red)}
+/* cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:25px;display:flex;flex-direction:column;gap:16px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.card:before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--red)}
+.card.don:before{background:var(--gold)}
+.card h3{font-size:22px;font-weight:600;letter-spacing:-.4px}
+.card .ta-line{color:var(--red);font-size:12px;margin-top:2px}
+.card p{color:var(--mute);margin:4px 0 0}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.icon{width:48px;height:48px;border-radius:12px;background:#fef2f2;border:1px solid #fee2e2;display:grid;place-items:center;color:var(--red);font-size:20px;flex-shrink:0}
+.card.don .icon{background:var(--cream);border-color:rgba(253,185,19,.3)}
+.tag{font-size:11px;font-weight:600;padding:5px 9px;background:var(--cream);color:#b22222;border:1px solid rgba(253,185,19,.4);white-space:nowrap}
+.tag.g{background:#f0eded;color:var(--mute);border-color:transparent;font-weight:500}
+.fee{background:var(--cream);border:1px solid rgba(253,185,19,.3);padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+.fee b{font-family:'Noto Sans';font-size:28px;color:var(--red)}
+.fee span{font-size:11px;color:var(--mute);font-weight:500}
+ul.feat{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.feat li{display:flex;gap:8px}
+ul.feat li:before{content:"✓";color:var(--red);font-weight:700}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--mute);text-transform:uppercase;margin-bottom:6px}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.chip{height:44px;border:1px solid var(--line);background:#fff;border-radius:2px;font:600 12px Inter;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+#custom{margin-top:8px;width:100%}
+.note{background:rgba(240,237,237,.6);padding:10px;font-size:13px;color:var(--mute)}
+.actions{margin-top:auto;padding-top:8px}
+/* buttons / forms */
+.btn{height:48px;border-radius:4px;font:600 14px Inter;cursor:pointer;border:1px solid var(--red);padding:0 24px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.p{background:var(--red);color:#fff}
+.btn.o{background:#fff;color:var(--red)}
+.btn.s{width:auto;height:44px}
+.btn:disabled{opacity:.6;cursor:wait}
+.row{display:flex;gap:12px;justify-content:space-between;margin-top:24px;flex-wrap:wrap}
+.row .btn{width:auto;min-width:160px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;color:var(--mute)}
+.field.full{grid-column:1/-1}
+input,select{height:42px;border:1px solid var(--line);border-radius:4px;padding:0 12px;font:400 14px Inter;color:var(--ink);background:#fff;width:100%}
+input:focus,select:focus{outline:2px solid rgba(200,16,46,.25);border-color:var(--red)}
+input.bad,select.bad{border-color:var(--red)}
+.err{color:var(--red);font-size:12px;min-height:16px;font-weight:500}
+.kv{display:grid;grid-template-columns:200px 1fr;gap:12px 16px;font-size:14px}
+.kv div:nth-child(odd){color:var(--mute)}
+.kv div:nth-child(even){font-weight:600}
+.pay{display:grid;gap:10px}
+.pay label{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:12px 14px;cursor:pointer}
+.pay label.on{border-color:var(--red);background:#fef2f2}
+.pay input{width:auto;height:auto;accent-color:var(--red)}
+.total{display:flex;justify-content:space-between;align-items:center;background:var(--cream);border:1px solid rgba(253,185,19,.3);padding:14px 16px;margin-bottom:16px}
+.total b{font-family:'Noto Sans';font-size:22px;color:var(--red)}
+.ok{text-align:center;padding:16px 0}
+.ok .big{width:72px;height:72px;border-radius:50%;background:#fef2f2;color:var(--red);display:grid;place-items:center;font-size:34px;margin:0 auto 16px}
+.ref{display:inline-block;margin:12px 0 4px;font:700 18px 'Noto Sans';letter-spacing:1px;background:var(--cream);border:1px dashed rgba(253,185,19,.6);padding:8px 16px;border-radius:4px}
+/* metrics */
+.metrics{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:24px}
+.metrics b{font-family:'Noto Sans';font-size:18px;display:block}
+.metrics .mini{display:flex;gap:24px}
+.metrics .mini small{display:block;font-size:11px;letter-spacing:.3px;text-transform:uppercase;color:var(--mute);font-weight:500}
+.metrics .mini strong{color:var(--red);font-size:12px}
+/* cta + footer */
+.cta{background:linear-gradient(90deg,var(--red-d),#b22222 50%,var(--red));color:#fff;padding:40px 0}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.cta h3{font-size:28px;font-weight:700;letter-spacing:-.5px}
+.cta p{margin:4px 0 0;opacity:.9}
+.cta .btn{background:#fff;color:var(--red);border-color:#fff;width:auto;padding:0 40px}
+footer{background:#fff;border-top:1px solid var(--line);padding:40px 0 16px}
+.fcols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+footer h4{font-size:14px;letter-spacing:.7px;text-transform:uppercase;margin-bottom:12px}
+footer p{margin:0 0 8px;color:var(--mute)}
+footer a{display:block;color:var(--mute);text-decoration:none;margin-bottom:8px;cursor:pointer}
+footer a:hover{color:var(--red)}
+.fbot{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;font-size:11px;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:99}
+.toast.show{opacity:1}
+@media(max-width:860px){
+  .cards,.grid2,.fcols{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+  nav{display:none}
+  .chips{grid-template-columns:repeat(2,1fr)}
+  .steps{gap:10px}.steps:before{left:40px;right:40px}
+  .step{font-size:10px}
+  .wrap{padding:0 16px}
+  .panel{padding:16px}
+  .cta .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="emblem">TMMK</div>
+      <div>
+        <h1 class="ta">தமிழக முற்போக்கு மக்கள் கட்சி <span style="font-family:'Noto Sans';font-weight:600;color:#1a1a1a">/ Tamizhaga Murpokku Makkal Katchi</span></h1>
+        <small>Official membership &amp; donation portal</small>
+      </div>
+    </div>
+    <nav>
+      <button class="on" data-nav="home">Home</button>
+      <button data-nav="member">Membership</button>
+      <button data-nav="donate">Donate</button>
+      <button data-nav="status">Status &amp; Card</button>
+      <button data-nav="help">Helpline</button>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lang-ta">தமிழ்</button>
+      <button id="lang-en" class="on">English</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="crumb">Home / <span>Membership Registration</span> / <span class="ta">உறுப்பினர் பதிவு</span></div>
+  <div class="head">
+    <div>
+      <h2 class="title" id="title">Join TMMK <span class="ta">| இணையுங்கள்</span></h2>
+      <p class="sub" id="subtitle">Register as a member or make a contribution through our official civic portal.</p>
+    </div>
+    <span class="phase">● 2026-2029 Official Enrollment Phase</span>
+  </div>
+
+  <div class="panel"><div class="steps" id="steps"></div></div>
+
+  <!-- STEP 1: Choose -->
+  <section id="s1">
+    <div class="cards">
+      <div class="card" id="card-member">
+        <div class="top">
+          <div class="icon">👥</div>
+          <span class="tag">Official Membership</span>
+        </div>
+        <div>
+          <h3>Become a Member</h3>
+          <div class="ta-line ta">உறுப்பினர் சேர்க்கை படிவம்</div>
+          <p>Register your details and join the organisation as an official member to participate in civic governance.</p>
+        </div>
+        <div class="fee"><b>₹100</b><span>/ 3 Years <span class="ta" style="color:var(--red);margin-left:6px">மூன்று ஆண்டுகள் செல்லுபடியாகும்</span></span></div>
+        <ul class="feat">
+          <li>Official Digital Membership ID card with photo &amp; QR verification.</li>
+          <li>Participation in grassroots constituency assemblies &amp; voting councils.</li>
+          <li>Direct notifications and invitations to welfare programmes and community drives.</li>
+        </ul>
+        <div class="actions">
+          <button class="btn p" data-pick="member">Register Now <span class="ta" style="font-size:12px;opacity:.9">(பதிவு செய்க)</span> →</button>
+        </div>
+      </div>
+
+      <div class="card don" id="card-donate">
+        <div class="top">
+          <div class="icon">♡</div>
+          <span class="tag g">Tax Deductible Welfare Fund</span>
+        </div>
+        <div>
+          <h3>Make a Donation</h3>
+          <div class="ta-line ta">பொது நல நன்கொடை</div>
+          <p>Contribute towards supporting the organisation's community, medical relief, and social empowerment programs.</p>
+        </div>
+        <div>
+          <div class="lbl">Select contribution</div>
+          <div class="chips" id="chips">
+            <button class="chip on" data-amt="250">₹250</button>
+            <button class="chip" data-amt="500">₹500</button>
+            <button class="chip" data-amt="1000">₹1,000</button>
+            <button class="chip" data-amt="custom">Custom</button>
+          </div>
+          <input type="number" id="custom" class="hidden" placeholder="Enter amount in ₹ (min 10)" min="10" step="1">
+          <div class="err" id="amt-err"></div>
+        </div>
+        <div class="note">♡ Every contribution directly supports ambulance networks, educational aid, disaster aid, and citizen rights initiatives across Tamil Nadu.</div>
+        <div class="actions">
+          <button class="btn o" data-pick="donate">Donate Now <span class="ta" style="font-size:12px;opacity:.8">(நன்கொடை அளிக்கவும்)</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel metrics">
+      <div>
+        <b>4,82,310+</b>
+        <span style="color:var(--mute)">Registered active members across 234 Assembly Constituencies</span>
+      </div>
+      <div class="mini">
+        <div><small>38 Districts</small><strong>100% Verified</strong></div>
+        <div><small>Govt. Audited</small><strong>Section 8 Compliant</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: Details -->
+  <section id="s2" class="hidden">
+    <div class="panel">
+      <h3 style="font-size:20px;margin-bottom:4px">Your details</h3>
+      <p class="sub" style="margin-bottom:20px">All fields marked * are required.</p>
+      <form id="details" novalidate>
+        <div class="grid2">
+          <label class="field">Full name (as per Aadhaar) *<input name="name" autocomplete="name"><span class="err" data-err="name"></span></label>
+          <label class="field">Mobile number *<input name="phone" inputmode="numeric" maxlength="10" placeholder="10-digit number"><span class="err" data-err="phone"></span></label>
+          <label class="field">Email *<input name="email" type="email" autocomplete="email"><span class="err" data-err="email"></span></label>
+          <label class="field">Date of birth *<input name="dob" type="date"><span class="err" data-err="dob"></span></label>
+          <label class="field">District *
+            <select name="district"><option value="">Select district</option></select>
+            <span class="err" data-err="district"></span></label>
+          <label class="field">Assembly constituency *<input name="constituency" placeholder="e.g. Anna Nagar"><span class="err" data-err="constituency"></span></label>
+          <label class="field full">Address *<input name="address" placeholder="Door no, street, area"><span class="err" data-err="address"></span></label>
+          <label class="field full" id="pan-field">PAN (optional, for 80G tax receipt)<input name="pan" maxlength="10" style="text-transform:uppercase" placeholder="ABCDE1234F"><span class="err" data-err="pan"></span></label>
+        </div>
+      </form>
+      <div class="row">
+        <button class="btn o" data-back="1">← Back</button>
+        <button class="btn p" id="to-review">Continue →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: Review -->
+  <section id="s3" class="hidden">
+    <div class="panel">
+      <h3 style="font-size:20px;margin-bottom:16px">Review your application</h3>
+      <div class="kv" id="review"></div>
+      <div class="row">
+        <button class="btn o" data-back="2">← Edit details</button>
+        <button class="btn p" id="to-pay">Proceed to payment →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4: Payment -->
+  <section id="s4" class="hidden">
+    <div class="panel">
+      <h3 style="font-size:20px;margin-bottom:16px">Payment</h3>
+      <div class="total"><span>Amount payable</span><b id="pay-amt">₹100</b></div>
+      <div class="pay" id="pay-options">
+        <label class="on"><input type="radio" name="method" value="UPI" checked> UPI (GPay, PhonePe, Paytm)</label>
+        <label><input type="radio" name="method" value="Card"> Debit / Credit card</label>
+        <label><input type="radio" name="method" value="Net Banking"> Net banking</label>
+      </div>
+      <p class="sub" style="margin-top:12px;font-size:12px">This is a demo checkout. No real money is charged.</p>
+      <div class="row">
+        <button class="btn o" data-back="3">← Back</button>
+        <button class="btn p" id="pay-btn">Pay securely</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 5: Confirm -->
+  <section id="s5" class="hidden">
+    <div class="panel ok">
+      <div class="big">✓</div>
+      <h3 style="font-size:24px" id="ok-title">Thank you for joining TMMK</h3>
+      <p class="sub" id="ok-sub">Your application has been received.</p>
+      <div class="ref" id="ref"></div>
+      <p class="sub">Keep this reference ID for future correspondence.</p>
+      <div class="row" style="justify-content:center">
+        <button class="btn o s" data-nav="home">Back to home</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cta">
+  <div class="wrap">
+    <div>
+      <h3>Be a Part of the Change</h3>
+      <p>Join us today and take the next step towards active participation.</p>
+    </div>
+    <button class="btn" data-pick="member">Become a Member</button>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <h4 class="ta" style="color:var(--red);font-size:18px;text-transform:none;letter-spacing:0">● Tamizhaga Murpokku Makkal Katchi</h4>
+        <p>Connecting people through membership, participation and a shared commitment to Tamil Nadu's progress.</p>
+        <p style="font-size:12px">✔ Authorized Civic &amp; Party Portal</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <a data-nav="home">Home</a>
+        <a data-nav="member">Become a Member</a>
+        <a data-nav="donate">Make a Donation</a>
+        <a data-nav="terms">Membership Terms</a>
+        <a data-nav="terms">Privacy Policy</a>
+        <a data-nav="help">Contact Us</a>
+      </div>
+      <div>
+        <h4>Contact &amp; support</h4>
+        <p><strong style="color:var(--ink)">Need assistance?</strong><br>Toll-Free Helpline: 1800-425-TMMK (8665)</p>
+        <p>support@tmmk-party.org</p>
+        <p>State Headquarters, Anna Salai, Chennai, Tamil Nadu - 600002</p>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Tamizhaga Murpokku Makkal Katchi. All rights reserved.</span>
+      <span>Privacy • Terms • <span style="color:var(--red)">🛡 Security Verified 256-bit SSL</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  const FEE = 100;
+  const DISTRICTS = ["Chennai","Coimbatore","Madurai","Tiruchirappalli","Salem","Tirunelveli","Erode","Vellore","Thanjavur","Kanchipuram","Tiruppur","Kanyakumari","Other"];
+  const STEP_LABELS = [["Choose","தேர்வு"],["Details","விவரம்"],["Review","சரிபார்ப்பு"],["Payment","கட்டணம்"],["Confirm","உறுதிப்படுத்தல்"]];
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+  const state = { type: "member", amount: 250, data: {}, lang: "en" };
+
+  /* ---------- helpers ---------- */
+  function toast(msg) {
+    const t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => t.classList.remove("show"), 2200);
+  }
+  const rupees = n => "₹" + Number(n).toLocaleString("en-IN");
+  const fmtIN = n => Number(n).toLocaleString("en-IN");
+
+  /* ---------- district dropdown ---------- */
+  DISTRICTS.forEach(d => {
+    const o = document.createElement("option");
+    o.value = d; o.textContent = d;
+    $('select[name="district"]').appendChild(o);
+  });
+
+  /* ---------- stepper ---------- */
+  function renderSteps(active) {
+    $("#steps").innerHTML = STEP_LABELS.map((l, i) => {
+      const cls = i === active ? "on" : (i < active ? "done" : "");
+      return `<div class="step ${cls}"><div class="dot">${i + 1}</div>
+        <span>${l[0]}</span><span class="ta" style="font-weight:400;font-size:10px">${l[1]}</span></div>`;
+    }).join("");
+  }
+
+  /* ---------- navigation between sections ---------- */
+  const SECTIONS = ["s1", "s2", "s3", "s4", "s5"];
+  function show(n) {
+    SECTIONS.forEach((id, i) => $("#" + id).classList.toggle("hidden", i !== n - 1));
+    renderSteps(Math.min(n - 1, 4));
+    $("#pan-field").classList.toggle("hidden", state.type !== "donate");
+    $("#title").innerHTML = state.type === "donate" && n > 1
+      ? `Make a Donation <span class="ta">| பொது நல நன்கொடை</span>`
+      : `Join TMMK <span class="ta">| இணையுங்கள்</span>`;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function goto(target) {
+    if (target === "home") { state.type = "member"; show(1); return; }
+    if (target === "member") { state.type = "member"; show(1); $("#card-member").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+    if (target === "donate") { state.type = "donate"; show(1); $("#card-donate").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+    if (target === "status") { toast("Status & Card lookup opens after you register."); return; }
+    if (target === "help") { toast("Helpline: 1800-425-TMMK (8665)"); return; }
+    if (target === "terms") { toast("Terms & privacy policy: available on request."); return; }
+  }
+
+  $$("[data-nav]").forEach(el => el.addEventListener("click", () => {
+    $$("nav button").forEach(b => b.classList.toggle("on", b.dataset.nav === el.dataset.nav));
+    goto(el.dataset.nav);
+  }));
+
+  /* ---------- step 1: choose ---------- */
+  $("#chips").addEventListener("click", e => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    $$(".chip").forEach(c => c.classList.toggle("on", c === b));
+    const custom = b.dataset.amt === "custom";
+    $("#custom").classList.toggle("hidden", !custom);
+    if (custom) { $("#custom").focus(); updateAmount(); }
+    else { state.amount = Number(b.dataset.amt); $("#amt-err").textContent = ""; }
+  });
+  function updateAmount() {
+    const v = Number($("#custom").value);
+    if (!$("#custom").value || v < 10) { $("#amt-err").textContent = "Enter an amount of at least ₹10."; return false; }
+    $("#amt-err").textContent = "";
+    state.amount = v;
+    return true;
+  }
+  $("#custom").addEventListener("input", updateAmount);
+
+  $$("[data-pick]").forEach(b => b.addEventListener("click", () => {
+    state.type = b.dataset.pick;
+    if (state.type === "donate") {
+      const custom = $(".chip.on").dataset.amt === "custom";
+      if (custom && !updateAmount()) return;
+    }
+    show(2);
+  }));
+
+  /* ---------- step 2: details ---------- */
+  const RULES = {
+    name:        v => v.trim().length >= 3 || "Enter your full name.",
+    phone:       v => /^[6-9]\d{9}$/.test(v) || "Enter a valid 10-digit mobile number.",
+    email:       v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || "Enter a valid email address.",
+    dob:         v => !!v || "Select your date of birth.",
+    district:    v => !!v || "Select a district.",
+    constituency:v => v.trim().length >= 2 || "Enter your constituency.",
+    address:     v => v.trim().length >= 5 || "Enter your address.",
+    pan:         v => !v || /^[A-Z]{5}[0-9]{4}[A-Z]$/.test(v.toUpperCase()) || "PAN format: ABCDE1234F."
+  };
+  const form = $("#details");
+  function readForm() {
+    const fd = new FormData(form), out = {};
+    for (const [k, v] of fd.entries()) out[k] = String(v).trim();
+    out.pan = (out.pan || "").toUpperCase();
+    return out;
+  }
+  function validate() {
+    const data = readForm();
+    let ok = true, first = null;
+    for (const key of Object.keys(RULES)) {
+      const el = form.elements[key];
+      if (!el) continue;
+      if (key === "pan" && state.type !== "donate") { el.classList.remove("bad"); continue; }
+      const res = RULES[key](data[key] || "");
+      const msg = res === true ? "" : res;
+      el.classList.toggle("bad", !!msg);
+      const errEl = form.querySelector(`[data-err="${key}"]`);
+      if (errEl) errEl.textContent = msg;
+      if (msg) { ok = false; first = first || el; }
+    }
+    if (first) first.focus();
+    return ok ? data : null;
+  }
+  form.addEventListener("input", e => {
+    const el = e.target, key = el.name, msg = RULES[key] ? RULES[key](el.value || "") : true;
+    const ok = msg === true;
+    el.classList.toggle("bad", !ok && el.value !== "");
+    const errEl = form.querySelector(`[data-err="${key}"]`);
+    if (errEl) errEl.textContent = (!ok && el.value !== "") ? msg : "";
+  });
+  $("#to-review").addEventListener("click", () => {
+    const data = validate();
+    if (!data) { toast("Please fix the highlighted fields."); return; }
+    state.data = data;
+    renderReview();
+    show(3);
+  });
+
+  /* ---------- step 3: review ---------- */
+  function renderReview() {
+    const d = state.data;
+    const rows = [
+      ["Application type", state.type === "member" ? "Membership (3 years)" : "Welfare donation"],
+      ["Amount", state.type === "member" ? rupees(FEE) : rupees(state.amount)],
+      ["Full name", d.name],
+      ["Mobile", "+91 " + d.phone],
+      ["Email", d.email],
+      ["Date of birth", d.dob],
+      ["District", d.district],
+      ["Constituency", d.constituency],
+      ["Address", d.address]
+    ];
+    if (state.type === "donate" && d.pan) rows.push(["PAN", d.pan]);
+    $("#review").innerHTML = rows.map(([k, v]) => `<div>${k}</div><div>${escapeHtml(v)}</div>`).join("");
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+  $("#to-pay").addEventListener("click", () => {
+    $("#pay-amt").textContent = rupees(state.type === "member" ? FEE : state.amount);
+    show(4);
+  });
+
+  /* ---------- step 4: payment ---------- */
+  $("#pay-options").addEventListener("change", e => {
+    $$("#pay-options label").forEach(l => l.classList.toggle("on", l.contains(e.target)));
+  });
+  $("#pay-btn").addEventListener("click", () => {
+    const btn = $("#pay-btn");
+    const method = document.querySelector('input[name="method"]:checked').value;
+    btn.disabled = true; btn.textContent = "Processing…";
+    setTimeout(() => {
+      btn.disabled = false; btn.textContent = "Pay securely";
+      completeApplication(method);
+    }, 1400);
+  });
+
+  /* ---------- step 5: confirm ---------- */
+  function completeApplication(method) {
+    const ref = (state.type === "member" ? "MEM" : "DON") + "-" +
+      new Date().getFullYear() + "-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+    $("#ref").textContent = ref;
+    $("#ok-title").textContent = state.type === "member" ? "Welcome to TMMK" : "Thank you for your contribution";
+    $("#ok-sub").textContent = state.type === "member"
+      ? `Your membership is being verified. Paid ${rupees(FEE)} via ${method}.`
+      : `Your donation of ${rupees(state.amount)} via ${method} has been received.`;
+    show(5);
+    toast("Payment successful (demo)");
+  }
+
+  /* ---------- back buttons ---------- */
+  $$("[data-back]").forEach(b => b.addEventListener("click", () => show(Number(b.dataset.back) - 1)));
+
+  /* ---------- language ---------- */
+  const TA = {
+    subtitle: "தமிழக முற்போக்கு மக்கள் கட்சியின் அதிகாரப்பூர்வ இணையதளத்தின் மூலம் உறுப்பினராகவோ அல்லது நன்கொடை அளிக்கவோ பதிவு செய்யுங்கள்.",
+    home: "முகப்பு", member: "உறுப்பினர்", donate: "நன்கொடை", status: "நிலை & அட்டை", help: "உதவி எண்"
+  };
+  const EN = { subtitle: "Register as a member or make a contribution through our official civic portal." };
+  function setLang(lang) {
+    state.lang = lang;
+    $("#lang-en").classList.toggle("on", lang === "en");
+    $("#lang-ta").classList.toggle("on", lang === "ta");
+    $("#subtitle").textContent = lang === "ta" ? TA.subtitle : EN.subtitle;
+    $("#subtitle").classList.toggle("ta", lang === "ta");
+    const navLabels = { home: "Home", member: "Membership", donate: "Donate", status: "Status &amp; Card", help: "Helpline" };
+    $$("nav button").forEach(b => b.innerHTML = lang === "ta" ? TA[b.dataset.nav] : navLabels[b.dataset.nav]);
+  }
+  $("#lang-en").addEventListener("click", () => setLang("en"));
+  $("#lang-ta").addEventListener("click", () => setLang("ta"));
+
+  /* ---------- init ---------- */
+  show(1);
+  renderSteps(0);
+})();
+</script>
+</body>
+</html>
